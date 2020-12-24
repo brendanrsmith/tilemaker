@@ -26,31 +26,27 @@
     <div class="side">
       <ul>
           <h3>Select your parameters:</h3>
-          <div>
+          <div class="param">
             <label>rotate</label>
-            <input id="rotate" type="range" name="rotate" min="0" max="6.28">
+            <input id="rotate" type="range" name="rotate" min="0" max="7" value="0">
           </div>
-          <div>
+          <div class="param">
             <label>color</label>
-            <input type="color" name="color">
+            <input id="user_color" type="color" name="color">
           </div>
-          <div>
+          <div class="param">
             <label>size</label>
-            <input type="range" name="size" id="side" min="0" max="100">
+            <input type="range" name="size" id="user_size" min="0" max="200">
           </div>
-          <div>
-            <canvas id="miniCanvas" width="200" height="200">looks like your browser does not support canvas tag.</canvas>
-          </div>
-          <div>
-            <form><button>button</button></form>
+          <div class="param" id="target"></div>
+          <div class="param">
+            <form><button>Tile it!</button></form>
           </div>
       </ul>
 
     </div>
     
-    <div id="target" class="main">
-      <h2>TileMaker</h2>
-      <p>this will be your tile:</p>
+    <div class="main">
       <canvas id="myCanvas" width="600" height="600">
         looks like your browser does not support canvas tag.
       </canvas>
