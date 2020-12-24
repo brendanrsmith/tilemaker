@@ -16,33 +16,42 @@
 
   <!-- navbar -->
   <div class="navbar">
+    <a href="#">Home</a>
     <a href="#">Link</a>
-    <a href="#">Link</a>
-    <a href="#">Link</a>
+    <a href="#">About</a>
   </div>
 
   <!-- flex grid (content)-->
   <div class="row">
     <div class="side">
-      <h3>Select your parameters:</h3>
       <ul>
-        <label>size</label>
-        <input type="range" name="size" min="0" max="100">
+          <h3>Select your parameters:</h3>
+          <div>
+            <label>size</label>
+            <input type="range" name="size" min="0" max="100">
+          </div>
+          <div>
+            <label>color</label>
+            <input type="color" name="">
+          </div>
+          <div>
+            <label>number edges</label>
+            <input type="number" name="">
+          </div>
+          <div>
+            <canvas id="miniCanvas" width="200" height="200">looks like your browser does not support canvas tag.</canvas>
+          </div>
+          <div>
+            <form><button>button</button></form>
+          </div>
       </ul>
-      <ul>
-        <label>color</label>
-        <input type="color" name="">
-      </ul>
-      <ul>
-        <label>number edges</label>
-        <input type="number" name="">
-      </ul>
+
     </div>
     
     <div class="main">
       <h2>TileMaker</h2>
       <p>this will be your tile:</p>
-      <canvas id="myCanvas">
+      <canvas id="myCanvas" width="600" height="600">
         looks like your browser does not support canvas tag.
       </canvas>
       <div class="red" id="box"></div>
