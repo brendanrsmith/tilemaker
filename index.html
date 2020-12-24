@@ -8,7 +8,7 @@
   <title>TileMaker</title>
 </head>
 
-<body>
+<body onload="startTile()">
   <!-- header -->
   <div class="header">
     <h1 class="title">Welcome to TileMaker</h1>
@@ -48,7 +48,7 @@
 
     </div>
     
-    <div class="main">
+    <div id="target" class="main">
       <h2>TileMaker</h2>
       <p>this will be your tile:</p>
       <canvas id="myCanvas" width="600" height="600">

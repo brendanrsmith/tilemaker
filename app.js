@@ -26,3 +26,49 @@ ctx.fillStyle = "blue";
 ctx.fillRect(50, 50, 75, 50);
 ctx.fillStyle = "green";
 ctx.fillRect(80, 80, 75, 50);
+
+let sprite;
+
+// Draw tile canvas
+function startTile() {
+  myTile.start();
+  sprite = new component(90, 90, "skyblue", 100, 120);
+}
+
+let myTile = {
+  canvas : document.createElement("canvas"),
+  start : function() {
+    this.canvas.width = 500;
+    this.canvas.height = 500;
+    this.context = this.canvas.getContext("2d");
+    // Create target for myTile canvas to be drawn
+    let target = document.getElementById("target");
+    target.insertAdjacentElement("afterbegin", this.canvas);
+    this.interval = setInterval(updateTiles, 20);
+  },
+  clear : function() {
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+}
+
+function component(width, height, color, x, y) {
+  this.width = width;
+  this.height = height;
+  this.angle = 0;
+  this.x = x;
+  this.y = y;
+  this.update = function() {
+    ctx = myTile.context;
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.angle);
+    ctx.fillStyle = color;
+    ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height);
+    ctx.restore();  }
+}
+
+function updateTiles() {
+  myTile.clear();
+  sprite.angle += 1 * Math.PI / 180;
+  sprite.update();
+}
