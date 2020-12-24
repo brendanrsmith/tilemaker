@@ -5,20 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <title>Brendigler's Page</title>
+  <title>TileMaker</title>
 </head>
 
 <body>
-  <div class="center">
-    <h1 class="title" style="text-align: center;">Welcome to Brendan's page</h1>
+  <!-- header -->
+  <div class="header">
+    <h1 class="title">Welcome to TileMaker</h1>
   </div>
-  <div>
-    <canvas id="quiltCanvas">
-      your browser does not support canvas tag.
-    </canvas>
+
+  <!-- navbar -->
+  <div class="navbar">
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
   </div>
-  <div class="red" id="box"></div>
-  <h1>TEST</h1>
+
+  <!-- flex grid (content)-->
+  <div class="row">
+    <div class="side">
+      <h1>Side test text</h1>
+      <p>more side test</p>
+    </div>
+    
+    <div class="main">
+      <h2>H2 main text</h2>
+      <p>texttext</p>
+      <canvas id="quiltCanvas">
+        your browser does not support canvas tag.
+      </canvas>
+      <div class="red" id="box"></div>
+    </div>
+  </div>
+  <!-- footer -->
+  <div class="footer">
+    <p class="signature">Made by Brendan Smith in 2020</p>
+  </div>
 
 
 <script src="app.js"></script>
