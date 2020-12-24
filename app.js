@@ -69,6 +69,6 @@ function component(width, height, color, x, y) {
 
 function updateTiles() {
   myTile.clear();
-  sprite.angle += 1 * Math.PI / 180;
+  sprite.angle = document.getElementById("rotate").value;
   sprite.update();
 }
