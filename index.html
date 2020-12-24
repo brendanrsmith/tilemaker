@@ -9,6 +9,7 @@
 </head>
 
 <body onload="startTile()">
+
   <!-- header -->
   <div class="header">
     <h1 class="title">Welcome to TileMaker</h1>
@@ -27,16 +28,20 @@
       <ul>
           <h3>Select your parameters:</h3>
           <div class="param">
-            <label>rotate</label>
+            <label>Rotation</label>
             <input id="rotate" type="range" name="rotate" min="0" max="7" value="0">
           </div>
           <div class="param">
-            <label>color</label>
-            <input id="user_color" type="color" name="color">
+            <label>Color</label>
+            <input id="user_color" type="color">
           </div>
           <div class="param">
-            <label>size</label>
+            <label>Size</label>
             <input type="range" name="size" id="user_size" min="0" max="200">
+          </div>
+          <div class="param">
+            <label> Background Color</label>
+            <input id="bg_color" type="color" name="color">
           </div>
           <div class="param" id="target"></div>
           <div class="param">
@@ -50,15 +55,15 @@
       <canvas id="myCanvas" width="600" height="600">
         looks like your browser does not support canvas tag.
       </canvas>
-      <div class="red" id="box"></div>
     </div>
   </div>
+
   <!-- footer -->
   <div class="footer">
     <p class="signature">Made by Brendan Smith in 2020</p>
   </div>
 
-
+<!-- script -->
 <script src="app.js"></script>
 </body>
 

@@ -1,12 +1,3 @@
-const box = document.getElementById("box");
-box.addEventListener("click", () => {
-  if (box.style.backgroundColor != "blue") {
-      box.style.backgroundColor = "blue";
-  } else {
-    box.style.backgroundColor = "orange";
-  }
-});
-
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
 ctx.font = "25px Comic Sans MS";
@@ -27,11 +18,13 @@ ctx.fillRect(50, 50, 75, 50);
 ctx.fillStyle = "green";
 ctx.fillRect(80, 80, 75, 50);
 
+let bgColor;
 let sprite;
 
 // Draw tile canvas
 function startTile() {
   myTile.start();
+  bgColor = new component(200, 200, "white", 100, 100);
   sprite = new component(100, 100, "skyblue", 100, 100);
 }
 
@@ -70,6 +63,7 @@ function component(width, height, color, x, y) {
 
 function updateTiles() {
   myTile.clear();
+  bgColor = document.getElementById("bg_color").value;
   sprite.angle = document.getElementById("rotate").value;
   sprite.width = document.getElementById("user_size").value;
   sprite.height = document.getElementById("user_size").value;
