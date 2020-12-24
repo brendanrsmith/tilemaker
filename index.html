@@ -24,13 +24,24 @@
   <!-- flex grid (content)-->
   <div class="row">
     <div class="side">
-      <h1>Side test text</h1>
-      <p>more side test</p>
+      <h3>Select your parameters:</h3>
+      <ul>
+        <label>size</label>
+        <input type="range" name="size" min="0" max="100">
+      </ul>
+      <ul>
+        <label>color</label>
+        <input type="color" name="">
+      </ul>
+      <ul>
+        <label>number edges</label>
+        <input type="number" name="">
+      </ul>
     </div>
     
     <div class="main">
-      <h2>H2 main text</h2>
-      <p>texttext</p>
+      <h2>TileMaker</h2>
+      <p>this will be your tile:</p>
       <canvas id="myCanvas">
         looks like your browser does not support canvas tag.
       </canvas>
