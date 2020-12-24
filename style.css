@@ -1,3 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+.center {
+  margin-left: 10%;
+  margin-right: 10%;
+  border: outset;
+  background-image: linear-gradient(to bottom right, aquamarine, violet);
+
+}
+
 body {
-  background-color: skyblue; 
+  font-family: sans-serif;
+}
+
+.title {
+  color: white;
+  text-shadow: 2px 2px 4px black;
+}
+
+.red {
+  width: 100px;
+  height: 100px;
+  background-color: red;
 }
