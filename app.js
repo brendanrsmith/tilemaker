@@ -83,20 +83,74 @@ function updateBigTiles() {
 }
 
 function save() {
-  let imgData = document.getElementById("bigTile").getElementsByTagName("canvas")[0];
-  let filename = document.getElementById("mosaic").value;
-  if(!localStorage.getItem(filename)) {
-    localStorage.setItem(filename, imgData);
-  } else {
-    window.alert("filname already in use");
-  }
+  const canvas = document.getElementById("bigTile").getElementsByTagName("canvas")[0];
+  const canvasContext = canvas.getContext("2d");
+  // Get the image data out of the context. This means you are getting back one long fucking
+  // array of integers width * height * 4 (R,G,B,Alpha). Each set of 4 integers represents
+  // a pixel. So a bunch of white shit will look like [255, 255, 255, 255, 255, 255, ...]
+  const imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+  // We then put this data into a blob. A blob is just a raw collection of bytes.
+  const blob = new Blob([imageData.data]);
+  // We make a  reader which can turn bytes into base64 which we do with readAsDataURL.
+  // A base64 string turns bytes into ascii (https://en.wikipedia.org/wiki/Base64#Base64_table)
+  // This turns all the 0101010101010 into aBcdkjs28102sd/s8f2... etc. Which is something
+  // that we can store
+  const reader = new FileReader();
+  reader.readAsDataURL(blob);
+  reader.onloadend = function () {
+    // When the reader is done, we can get the result from the reader which is the string.
+    // We then make a little object that we will store with JSON. We store the data,
+    // as well as the width and height so we can rebuild the image later
+    const data = {
+      data: reader.result,
+      width: canvas.width,
+      height: canvas.height
+    }
+    // Then we turn this object into a string. It'll look something like `{"width":600,"height":600,"data":"aBcdkjs28102sd/s8f2...[forever]"}`;
+    // Since it a sring, we can store it in local storage.
+    const stringified = JSON.stringify(data);
+    let filename = document.getElementById("mosaic").value;
+    if (!localStorage.getItem(filename)) {
+      localStorage.setItem(filename, stringified);
+    } else {
+      window.alert("filname already in use");
+    }
+  } 
+}
+
+// To get the data out we just do it all in reverse.
+function retrieve(filename) {
+
+  // Get the item from local storage
+  const stringified = localStorage.getItem(filename);
+  // Turn that JSON object back into a Javascript object. 
+  const data = JSON.parse(stringified);
+
+  // At this point data is now an object again that has the width, height, and data properties.
+  // The data (on data) property is that long base 64 string, so we'll have fetch turn it
+  // back into a blob.
+
+  fetch(data.data)
+    // Turn the result, whatever it is into a blob
+    .then(res => res.blob())
+    // Now its a blob, turn it back into a buffer (basically a just big array of numbers)
+    .then((blob) => blob.arrayBuffer())
+    .then((arrayBuffer) => {
+      // Make the big list of numbers a more specific type of list of numbers that an image data instance
+      // wnats. Speciically, a UInt8ClampedArray.
+      const uIntArray = new Uint8ClampedArray(arrayBuffer);
+      // Now we can reconstruct the image data object
+      const newImageData = new ImageData(uIntArray, data.width, data.height);
+      // Now at this point you can find an existing canvas and load this image data into, or make a new
+      // canvas, or whatever the fuck you are going to do.
+    })
 }
 
 function updateGallery(filename) {
   //button 'filename' will trigger updateGallery to draw that file to Gallery()
   this.filename = filename
   ctx = bigTile.context;
-  let imgData = localStorage.getItem(this.filename);
+  let imgData = retrieve(filename);
   bigTile.clear();
   ctx.drawImage(imgData, 0, 0);
 }
@@ -104,6 +158,4 @@ function updateGallery(filename) {
 
 // tile_it button listener
 document.getElementById("myBtn").addEventListener("click", updateBigTiles);
-
-document.getElementById("save").addEventListener("click", save);
 
