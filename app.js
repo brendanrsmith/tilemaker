@@ -1,5 +1,6 @@
 let bgColor;
 let sprite;
+let storage = widow.localStorage;
 
 // Draw tile canvas
 function startTile() {
@@ -11,6 +12,11 @@ function startTile() {
 
 function gallery() {
   bigTile.start();
+  for (var i = storage.length - 1; i >= 0; i--) {
+    var key = storage.key(i);
+    var val = storage.getItem(key);
+
+  }
 }
 
 let myTile = {
@@ -146,6 +152,7 @@ function retrieve(filename) {
     })
 }
 
+
 function updateGallery(filename) {
   //button 'filename' will trigger updateGallery to draw that file to Gallery()
   this.filename = filename
@@ -159,3 +166,5 @@ function updateGallery(filename) {
 // tile_it button listener
 document.getElementById("myBtn").addEventListener("click", updateBigTiles);
 
+// gallery update link listener
+document.getElementsByClassName("gallery_link").addEventListener("click", updateGallery);
