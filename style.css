@@ -13,7 +13,7 @@ canvas {
 }
 
 .header {
-  padding: 40px;
+  padding: 10px;
   text-align: center;
   color: white;
   background-image: linear-gradient(to top left, violet, pink);
