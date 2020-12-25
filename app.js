@@ -9,6 +9,10 @@ function startTile() {
   sprite = new component(100, 100, "skyblue", 100, 100);
 }
 
+function gallery() {
+  bigTile.start();
+}
+
 let myTile = {
   canvas : document.createElement("canvas"),
   start : function() {
@@ -33,9 +37,7 @@ let bigTile = {
     this.context = this.canvas.getContext("2d");
     // Create target for big canvas to be drawn
     let main = document.getElementById("bigTile");
-    main.insertAdjacentElement("afterbegin", this.canvas);
-    // here will be the tile_it button listener to update canvas
-    
+    main.insertAdjacentElement("afterbegin", this.canvas);    
   },
   clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -88,6 +90,15 @@ function save() {
   } else {
     window.alert("filname already in use");
   }
+}
+
+function updateGallery(filename) {
+  //button 'filename' will trigger updateGallery to draw that file to Gallery()
+  this.filename = filename
+  ctx = bigTile.context;
+  let imgData = localStorage.getItem(this.filename);
+  bigTile.clear();
+  ctx.drawImage(imgData, 0, 0);
 }
 
 
