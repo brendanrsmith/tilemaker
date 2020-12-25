@@ -82,7 +82,7 @@ function updateBigTiles() {
 
 function save() {
   let imgData = document.getElementById("bigTile").getElementsByTagName("canvas")[0];
-  let filename = document.getElementById("save").value;
+  let filename = document.getElementById("mosaic").value;
   if(!localStorage.getItem(filename)) {
     localStorage.setItem(filename, imgData);
   } else {
