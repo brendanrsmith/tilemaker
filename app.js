@@ -16,9 +16,10 @@ function gallery() {
   for (var i = storage.length - 1; i >= 0; i--) {
     var filename = storage.key(i);
     var val = storage.getItem(filename);
-    var node = document.createElement("LI");                 
+    var node = document.createElement("button");                 
     var textnode = document.createTextNode(filename);      
-    node.appendChild(textnode);                            
+    node.appendChild(textnode);
+    node.                            
     document.getElementById("list_files").appendChild(node);
     }   
 }
