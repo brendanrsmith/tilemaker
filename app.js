@@ -17,9 +17,11 @@ function gallery() {
     var filename = storage.key(i);
     var val = storage.getItem(filename);
     var node = document.createElement("button");                 
-    var textnode = document.createTextNode(filename);      
-    node.appendChild(textnode);
-    node.                            
+    var textnode = document.createTextNode(filename); 
+    var att = document.createAttribute("onclick")
+    att.value = updateGallery(filename);
+    node.setAttribute(att);
+    node.appendChild(textnode);                            
     document.getElementById("list_files").appendChild(node);
     }   
 }
