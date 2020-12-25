@@ -1,3 +1,4 @@
+// placeholder canvas
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
 ctx.font = "25px Comic Sans MS";
@@ -17,6 +18,7 @@ ctx.fillStyle = "blue";
 ctx.fillRect(50, 50, 75, 50);
 ctx.fillStyle = "green";
 ctx.fillRect(80, 80, 75, 50);
+// end placeholder
 
 let bgColor;
 let sprite;
@@ -24,6 +26,7 @@ let sprite;
 // Draw tile canvas
 function startTile() {
   myTile.start();
+  bigTile.start();
   bgColor = new component(200, 200, "white", 100, 100);
   sprite = new component(100, 100, "skyblue", 100, 100);
 }
@@ -38,6 +41,22 @@ let myTile = {
     let target = document.getElementById("target");
     target.insertAdjacentElement("afterbegin", this.canvas);
     this.interval = setInterval(updateTiles, 20);
+  },
+  clear : function() {
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+}
+
+let bigTile = {
+  canvas : document.createElement("canvas"),
+  start : function() {
+    this.canvas.width = 600;
+    this.canvas.height = 600;
+    this.context = this.canvas.getContext("2d");
+    // Create target for big canvas to be drawn
+    let main = document.getElementById("bigTile");
+    main.insertAdjacentElement("afterbegin", this.canvas);
+    // here will be the tile_it button listener to update canvas
   },
   clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -63,10 +82,11 @@ function component(width, height, color, x, y) {
 
 function updateTiles() {
   myTile.clear();
-  bgColor = document.getElementById("bg_color").value;
+  bgColor.color = document.getElementById("bg_color").value;
   sprite.angle = document.getElementById("rotate").value;
   sprite.width = document.getElementById("user_size").value;
   sprite.height = document.getElementById("user_size").value;
   sprite.color = document.getElementById("user_color").value;
+  bgColor.update();
   sprite.update();
 }
