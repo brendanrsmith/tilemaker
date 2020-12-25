@@ -21,7 +21,7 @@ canvas {
 
 .title {
   color: white;
-  text-shadow: 2px 2px 4px black;
+  text-shadow: 2px 2px 4px gray;
 }
 
 .navbar {
@@ -86,3 +86,6 @@ canvas {
 
 }
 
+button {
+  
+}

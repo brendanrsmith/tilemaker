@@ -80,7 +80,19 @@ function updateBigTiles() {
   ctx.fill();
 }
 
+function save() {
+  let imgData = document.getElementById("bigTile").getElementsByTagName("canvas")[0];
+  let filename = document.getElementById("save").value;
+  if(!localStorage.getItem(filename)) {
+    localStorage.setItem(filename, imgData);
+  } else {
+    window.alert("filname already in use");
+  }
+}
+
+
 // tile_it button listener
 document.getElementById("myBtn").addEventListener("click", updateBigTiles);
 
+document.getElementById("save").addEventListener("click", save);
 

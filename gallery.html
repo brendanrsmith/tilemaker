@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>About TileMaker</title>
+</head>
+
+<body onload="startTile()">
+
+  <!-- header -->
+  <div class="header">
+    <h1 class="title">Gallery</h1>
+  </div>
+
+  <!-- navbar -->
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <!-- flex grid (content)-->
+  <div class="row">
+    <div class="side">
+      <ul>
+          <h3>Style Your Tile:</h3>
+          <div class="param">
+            <label>Rotation</label>
+            <input id="rotate" type="range" name="rotate" min="0" max="7" value="0">
+          </div>
+          <div class="param">
+            <label>Color</label>
+            <input id="user_color" type="color">
+          </div>
+          <div class="param">
+            <label>Size</label>
+            <input type="range" name="size" id="user_size" min="0" max="200">
+          </div>
+          <div class="param">
+            <label> Background Color</label>
+            <input id="bgcol" type="color" value="#FFFFFF">
+          </div>
+          <div class="param" id="target"></div>
+          <div class="param">
+            <form><button type="button" id="myBtn">Tile it!</button></form>
+          </div>
+      </ul>
+
+    </div>
+    
+    <div class="main" id="bigTile"></div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <p class="signature">Made by Brendan Smith in 2020</p>
+  </div>
+
+<!-- script -->
+<script src="app.js"></script>
+</body>
+
+</html>
