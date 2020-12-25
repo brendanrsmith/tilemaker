@@ -1,6 +1,6 @@
 let bgColor;
 let sprite;
-let storage = widow.localStorage;
+let storage = window.localStorage;
 
 // Draw tile canvas
 function startTile() {
@@ -12,11 +12,15 @@ function startTile() {
 
 function gallery() {
   bigTile.start();
+  let target = document.getElementById("list_files");
   for (var i = storage.length - 1; i >= 0; i--) {
-    var key = storage.key(i);
-    var val = storage.getItem(key);
-
-  }
+    var filename = storage.key(i);
+    var val = storage.getItem(filename);
+    var node = document.createElement("LI");                 
+    var textnode = document.createTextNode(filename);      
+    node.appendChild(textnode);                            
+    document.getElementById("list_files").appendChild(node);
+    }   
 }
 
 let myTile = {
@@ -167,4 +171,4 @@ function updateGallery(filename) {
 document.getElementById("myBtn").addEventListener("click", updateBigTiles);
 
 // gallery update link listener
-document.getElementsByClassName("gallery_link").addEventListener("click", updateGallery);
+// document.getElementsByClassName("gallery_link").addEventListener("click", updateGallery);
