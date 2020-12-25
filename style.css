@@ -56,7 +56,11 @@ canvas {
   background-color: white;
   padding: 20px;
 }
-
+.main p {
+  text-align: center;
+  font-family: monospace;
+  font-size: 1.5em;
+}
 .footer {
   padding: 20px;
   text-align: center;
@@ -86,6 +90,4 @@ canvas {
 
 }
 
-button {
-  
-}
+
