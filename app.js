@@ -1,25 +1,3 @@
-// placeholder canvas
-let canvas = document.getElementById("myCanvas");
-let ctx = canvas.getContext("2d");
-ctx.font = "25px Comic Sans MS";
-ctx.fillStyle = "coral";
-ctx.textAlign = "center";
-ctx.fillText("placeholder", canvas.width/2, canvas.height/2);
-ctx.moveTo(75, 20);
-ctx.font = "30px Arial";
-ctx.strokeText("Hello World", 76, 22);
-ctx.lineTo(200, 100);
-ctx.stroke()
-
-ctx.globalAlpha = 0.2;
-ctx.fillStyle = "red";
-ctx.fillRect(20, 20, 75, 50);
-ctx.fillStyle = "blue";
-ctx.fillRect(50, 50, 75, 50);
-ctx.fillStyle = "green";
-ctx.fillRect(80, 80, 75, 50);
-// end placeholder
-
 let bgColor;
 let sprite;
 
@@ -40,7 +18,7 @@ let myTile = {
     // Create target for myTile canvas to be drawn
     let target = document.getElementById("target");
     target.insertAdjacentElement("afterbegin", this.canvas);
-    this.interval = setInterval(updateTiles, 20);
+    this.interval = setInterval(updateMyTile, 20);
   },
   clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -57,6 +35,7 @@ let bigTile = {
     let main = document.getElementById("bigTile");
     main.insertAdjacentElement("afterbegin", this.canvas);
     // here will be the tile_it button listener to update canvas
+    
   },
   clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -80,9 +59,9 @@ function component(width, height, color, x, y) {
     ctx.restore();  }
 }
 
-function updateTiles() {
+function updateMyTile() {
   myTile.clear();
-  bgColor.color = document.getElementById("bg_color").value;
+  bgColor.color = document.getElementById("bgcol").value;
   sprite.angle = document.getElementById("rotate").value;
   sprite.width = document.getElementById("user_size").value;
   sprite.height = document.getElementById("user_size").value;
@@ -90,3 +69,18 @@ function updateTiles() {
   bgColor.update();
   sprite.update();
 }
+
+function updateBigTiles() {
+  ctx = bigTile.context;
+  let imgData = document.getElementById("target").getElementsByTagName("canvas")[0];
+  let pattern = ctx.createPattern(imgData, "repeat");
+  bigTile.clear();
+  ctx.rect(0, 0, 600, 600);
+  ctx.fillStyle = pattern;
+  ctx.fill();
+}
+
+// tile_it button listener
+document.getElementById("myBtn").addEventListener("click", updateBigTiles);
+
+
