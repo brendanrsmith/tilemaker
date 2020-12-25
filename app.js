@@ -17,11 +17,9 @@ function gallery() {
     var filename = storage.key(i);
     var val = storage.getItem(filename);
     var node = document.createElement("button");                 
-    var textnode = document.createTextNode(filename); 
-    var att = document.createAttribute("onclick")
-    att.value = updateGallery(filename);
-    node.setAttribute(att);
-    node.appendChild(textnode);                            
+    node.innerText = filename;
+    node.addEventListener("click", retrieve(filename));
+    node.setAttribute("class", "galleryButton");                            
     document.getElementById("list_files").appendChild(node);
     }   
 }
@@ -156,17 +154,22 @@ function retrieve(filename) {
       const newImageData = new ImageData(uIntArray, data.width, data.height);
       // Now at this point you can find an existing canvas and load this image data into, or make a new
       // canvas, or whatever the fuck you are going to do.
+      return newImageData[0];
     })
+  // is this working?
+  console.log(filename);
+
 }
 
 
 function updateGallery(filename) {
-  //button 'filename' will trigger updateGallery to draw that file to Gallery()
-  this.filename = filename
+  // button 'filename' will trigger updateGallery to draw that file to Gallery()
+  this.filename = filename;
   ctx = bigTile.context;
   let imgData = retrieve(filename);
   bigTile.clear();
   ctx.drawImage(imgData, 0, 0);
+  console.log(filename);
 }
 
 
@@ -174,4 +177,6 @@ function updateGallery(filename) {
 document.getElementById("myBtn").addEventListener("click", updateBigTiles);
 
 // gallery update link listener
-// document.getElementsByClassName("gallery_link").addEventListener("click", updateGallery);
+//document.getElementsByClassName("galleryButton").addEventListener("click", retrieve(this.innerText));
+
+

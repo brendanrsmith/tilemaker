@@ -90,4 +90,9 @@ canvas {
 
 }
 
+.galleryButton {
+  display: block;
+  margin-top: 1em;
+  min-width: 100px;
+}
 
