@@ -18,7 +18,7 @@ function gallery() {
     var val = storage.getItem(filename);
     var node = document.createElement("button");                 
     node.innerText = filename;
-    node.addEventListener("click", retrieve(filename));
+    node.addEventListener("click", () => updateGallery(filename));
     node.setAttribute("class", "galleryButton");                            
     document.getElementById("list_files").appendChild(node);
     }   
@@ -166,10 +166,11 @@ function updateGallery(filename) {
   // button 'filename' will trigger updateGallery to draw that file to Gallery()
   this.filename = filename;
   ctx = bigTile.context;
-  let imgData = retrieve(filename);
-  bigTile.clear();
-  ctx.drawImage(imgData, 0, 0);
-  console.log(filename);
+  retrieve(filename, (imageData) => {
+      bigTile.clear();
+      ctx.drawImage(imageData, 0, 0);
+      console.log(filename);
+  });
 }
 
 
