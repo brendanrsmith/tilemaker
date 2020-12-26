@@ -109,7 +109,9 @@ function save() {
     }
     const stringified = JSON.stringify(data);
     let filename = document.getElementById("mosaic").value;
-    if (!localStorage.getItem(filename)) {
+    if (!filename) {
+      window.alert("please enter a filename");
+    } else if (!localStorage.getItem(filename)) {
       localStorage.setItem(filename, stringified);
     } else {
       window.alert("filname already in use");
