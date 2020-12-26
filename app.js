@@ -13,10 +13,9 @@ function startTile() {
 function gallery() {
   bigTile.start();
   let target = document.getElementById("list_files");
-  for (var i = storage.length - 1; i >= 0; i--) {
-    var filename = storage.key(i);
-    var val = storage.getItem(filename);
-    var node = document.createElement("button");                 
+  for (let i = storage.length - 1; i >= 0; i--) {
+    let filename = storage.key(i);
+    let node = document.createElement("button");                 
     node.innerText = filename;
     node.addEventListener("click", () => updateGallery(filename));
     node.setAttribute("class", "galleryButton");                            
@@ -141,7 +140,6 @@ function retrieve(filename, callback) {
 
 function updateGallery(filename) {
   // button 'filename' will trigger updateGallery to draw that file to Gallery()
-  this.filename = filename;
   ctx = bigTile.context;
   retrieve(filename, (imageData) => {
       bigTile.clear();
