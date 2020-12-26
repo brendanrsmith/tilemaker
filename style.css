@@ -114,6 +114,11 @@ button:hover {
   color: black;
 }
 
+.about {
+  max-width: 800px;
+  margin: auto;
+  padding: 100px;
+}
 .signature {
   font-family: monospace;
 }
