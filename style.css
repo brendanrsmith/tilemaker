@@ -3,25 +3,41 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Helvetica, sans-serif;
   margin: 0;
-
 }
 
 canvas {
     border: 2px solid #d3d3d3;
 }
 
+a:link, a:visited {
+  color: salmon;
+  text-decoration: none;
+}
+a:hover, a:active {
+  color: darksalmon;
+}
+
+h3 {
+  text-decoration: none;
+  size: 14px;
+  color: #333;
+  letter-spacing: 2px;
+  font-weight: normal;
+}
+
 .header {
   padding: 10px;
   text-align: center;
   color: white;
-  background-image: linear-gradient(to top left, violet, pink);
+  background-color: lightgrey;
 }
 
 .title {
-  color: white;
-  text-shadow: 2px 2px 4px gray;
+  color: #333;
+  font-weight: normal;
+  letter-spacing: 4px;
 }
 
 .navbar {
@@ -74,7 +90,30 @@ canvas {
 }
 .param {
   padding-top: 8px;
+
 }
+.param input[type="text"] {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  border: 2px solid #d3d3d3;
+}
+
+button {
+  background-color: #333;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin: 4px 2px;
+  min-width: 100px;
+}
+
+button:hover {
+  background: #ddd;
+  color: black;
+}
+
 .signature {
   font-family: monospace;
 }
@@ -89,10 +128,3 @@ canvas {
   border: solid black 1px;
 
 }
-
-.galleryButton {
-  display: block;
-  margin-top: 1em;
-  min-width: 100px;
-}
-
